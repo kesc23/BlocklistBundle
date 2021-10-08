@@ -13,7 +13,7 @@ return array(
                     'id'        => 'plugin_blocklist_index',
                     'iconClass' => 'fa-ban',
                     #'access'    => 'plugin:blocklist:worlds:view',
-                    'parent'    => 'mautic.core',
+                    #'parent'    => 'mautic.core',
                 ),
             ),
         ),
