@@ -8,7 +8,7 @@ return array(
     'routes'      => array(
         'main'    => array(
             'plugin_blocklist_main' => array(
-                'path'       => '/blocklist',
+                'path'       => "/blocklist/view",
                 'controller' => 'BlocklistBundle:Default:main'
             )
         )
