@@ -20,8 +20,7 @@ return array(
                 'plugin.blocklist.index' => array(
                     'id'        => 'plugin_blocklist_index',
                     'iconClass' => 'fa-ban',
-                    'access'    => 'plugin:blocklist:main:main',
-                    #'parent'    => 'mautic.core',
+                    'route'    => 'plugin_blocklist_main',
                 ),
             ),
         ),
