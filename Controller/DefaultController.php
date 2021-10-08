@@ -9,7 +9,7 @@ class DefaultController extends CommonController
     {
         $this->delegateView(
             array(
-                'contentTemplate' => 'BlockListBundle:Main:main.html.php'
+                'contentTemplate' => 'BlocklistBundle:Main:main.html.php'
             )
         );
     }
