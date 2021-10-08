@@ -8,19 +8,19 @@ return array(
     'routes'      => array(
         'main'    => array(
             'plugin_blocklist_main' => array(
-                'path'       => "/blocklist/view",
+                'path'       => "/blocklist",
                 'controller' => 'BlocklistBundle:Default:main'
             )
         )
     ),
     'menu'        => array(
-        'main' => array(
+        'main'    => array(
             'priority' => 4,
             'items' => array(
                 'plugin.blocklist.main' => array(
                     'id'        => 'plugin_blocklist_index',
                     'iconClass' => 'fa-ban',
-                    'route'    => 'plugin_blocklist_main',
+                    'route'     => 'plugin_blocklist_main',
                 ),
             ),
         ),
