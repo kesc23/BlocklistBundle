@@ -1,9 +1,10 @@
 <?php
+declare( strict_types=1 );
+
 namespace MauticPlugin\BlacklistBundle;
+use MauticPlugin\IntegrationsBundle\Bundle\AbstractPluginBundle;
 
-use Mautic\PluginBundle\Bundle\PluginBundleBase;
-
-Class BlacklistBundle extends PluginBundleBase
+Class BlacklistBundle extends AbstractPluginBundle
 {
     
 }
