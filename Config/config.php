@@ -17,7 +17,7 @@ return array(
         'main'    => array(
             'priority' => 4,
             'items' => array(
-                'plugin.blocklist.main' => array(
+                'plugin.blocklist.menuname' => array(
                     'id'        => 'plugin_blocklist_index',
                     'iconClass' => 'fa-ban',
                     'route'     => 'plugin_blocklist_main',
