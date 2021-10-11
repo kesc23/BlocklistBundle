@@ -1,5 +1,5 @@
 <?php
 ?>
-<div>
-    <h1 class="content-body">Hello!</h1>
+<div class="content-body">
+    <h1>Hello!</h1>
 </div>
