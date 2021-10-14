@@ -15,7 +15,7 @@ $header = 'Block List';
                     <input
                         class="form-control"
                         type="text"
-                        value="<?php echo "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['REMOTE_ADDRESS']}" ?>"
+                        value="<?php echo "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['SERVER_NAME']}" ?>"
                         name="Blocklist_mauticBaseUrl"
                         id="Blocklist_mauticBaseUrl">
                 </fieldset>
@@ -34,6 +34,7 @@ $header = 'Block List';
 
         <pre>
             <?php print_r( $_POST ) ?>
+            <?php print_r( $GLOBALS ) ?>
         </pre>
         <h1>Hello!</h1>
     </div>
