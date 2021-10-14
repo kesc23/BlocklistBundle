@@ -1,7 +1,7 @@
 <?php
 
 ?>
-<div class="content-body">
+<div class="content-body pl-md">
     <?php if( ! $end ): ?>
     <div style="margin: 0px auto">
         <form action="/api/blocklist-bundle/oauth" method="post">
