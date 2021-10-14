@@ -3,22 +3,15 @@
 ?>
 <div class="content-body">
     <?php if( ! $end ): ?>
-    <script>
-        function getUrl( node )
-        {
-            fullDomain  = `https://${document.domain}/api/blocklist-bundle/oauth`;
-            node.action = fullDomain;
-        }
-    </script>
     <div style="margin: 0px auto">
-        <form action="" method="post" onchange="getUrl(this)">
+        <form action="/api/blocklist-bundle/oauth" method="post">
             <fieldset>
-                <label for="clientSecret">Seu client secret</label>
-                <input type="password" name="clientSecret" id="clientSecret">
+                <label class="control-label required" for="clientSecret">Seu client secret</label>
+                <input class="form-control" type="password" name="clientSecret" id="clientSecret">
             </fieldset>
             <fieldset>
-                <label for="clientId">Seu client Id</label>
-                <input type="text" name="clientId" id="clientId">
+                <label class="control-label required" for="clientKey">Seu client Id</label>
+                <input class="form-control" type="text" name="clientKey" id="clientKey">
             </fieldset>
             <button type="submit">Enviar</button>
         </form>
