@@ -11,7 +11,7 @@
         }
     </script>
     <div style="margin: 0px auto">
-        <form action="" method="post" onload="getUrl(this)">
+        <form action="" method="post" onchange="getUrl(this)">
             <fieldset>
                 <label for="clientSecret">Seu client secret</label>
                 <input type="password" name="clientSecret" id="clientSecret">
