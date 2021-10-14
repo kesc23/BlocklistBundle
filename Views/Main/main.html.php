@@ -1,5 +1,5 @@
 <?php
-
+$header = 'Block List';
 ?>
 <div class="content-body">
     <div class="pa-md">
