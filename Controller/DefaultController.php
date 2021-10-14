@@ -9,13 +9,13 @@ class DefaultController extends CommonController
     {
         global $blocklist_postCond;
         $blocklist_postCond = (
-            isset( $_POST['Blocklist_mauticBaseUrl'] )
-         && isset( $_POST['Blocklist_clientKey'] )
-         && isset( $_POST['Blocklist_clientSecret'] )
+            \isset( $_POST['Blocklist_mauticBaseUrl'] )
+         && \isset( $_POST['Blocklist_clientKey'] )
+         && \isset( $_POST['Blocklist_clientSecret'] )
         );
 
         if( $blocklist_postCond ):
-            $this->verifyOAuth();
+            return $this->verifyOAuthAction();
         else:
             return $this->delegateView(
                 array( 'contentTemplate' => 'BlocklistBundle:Main:main.html.php' )
@@ -23,7 +23,7 @@ class DefaultController extends CommonController
         endif;
     }
 
-    public function verifyOAuth()
+    public function verifyOAuthAction()
     {
         global $settings;
 
