@@ -2,7 +2,6 @@
 
 $header = 'Block List';
 
-ob_start();
 ?>
 <div class="content-body">
     <div class="pa-md">
@@ -28,5 +27,3 @@ ob_start();
         <h1>Hello!</h1>
     </div>
 </div>
-
-<?php return ob_get_clean() ?>
