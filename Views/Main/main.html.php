@@ -1,4 +1,5 @@
 <?php
+$view->extend('MauticCoreBundle:Default:content.html.php');
 
 $header = 'Block List';
 
@@ -22,7 +23,7 @@ $header = 'Block List';
         <?php endif ?>
 
         <pre>
-            <?php print_r( MAUTIC_TABLE_PREFIX ) ?>
+            <?php print_r( $_SERVER ) ?>
         </pre>
         <h1>Hello!</h1>
     </div>
