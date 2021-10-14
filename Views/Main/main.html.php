@@ -1,5 +1,5 @@
 <?php
-$view->extend('MauticCoreBundle:Default:content.html.php');
+$view->extend( 'MauticCoreBundle:Default:content.html.php' );
 
 $header = 'Block List';
 
@@ -23,7 +23,7 @@ $header = 'Block List';
         <?php endif ?>
 
         <pre>
-            <?php print_r( $_SERVER ) ?>
+            <?php print_r( $_POST ) ?>
         </pre>
         <h1>Hello!</h1>
     </div>
