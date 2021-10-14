@@ -11,14 +11,7 @@ return array(
                 'path'       => "/blocklist",
                 'controller' => 'BlocklistBundle:Default:main'
             )
-        ),
-        #'api'     => array(
-        #    'plugin_blocklist_oauth' => array(
-        #        'path'       => '/blocklist-bundle/oauth',
-        #        'method'     => 'POST',
-        #        'controller' => 'BlocklistBundle:Api:Auth'
-        #    )
-        #)
+        )
     ),
     'menu'        => array(
         'main'    => array(
@@ -31,5 +24,12 @@ return array(
                 ),
             ),
         ),
+    ),
+    'services'    => array(
+        'models'  => array(
+            'mautic.blocklist.model.contacts' => array(
+                'class' => 'MauticPlugin\BlocklistBundle\model\ContactsModel'
+            )
+        )
     ),
 );
