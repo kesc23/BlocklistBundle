@@ -1,11 +1,13 @@
 <?php
+
 $header = 'Block List';
+
 ?>
 <div class="content-body">
     <div class="pa-md">
         <?php if( ! $end ): ?>
         <div style="margin: 0px auto">
-            <form action="/api/blocklist-bundle/oauth" method="post">
+            <form target="_self" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
                 <fieldset>
                     <label class="control-label required" for="clientKey">Seu client Id</label>
                     <input class="form-control" type="text" name="clientKey" id="clientKey">
@@ -19,6 +21,9 @@ $header = 'Block List';
         </div>
         <?php endif ?>
 
+        <pre>
+            <?php print_t( MAUTIC_TABLE_PREFIX ) ?>
+        </pre>
         <h1>Hello!</h1>
     </div>
 </div>
