@@ -12,13 +12,13 @@ return array(
                 'controller' => 'BlocklistBundle:Default:main'
             )
         ),
-        'api'     => array(
-            'plugin_blocklist_oauth' => array(
-                'path'       => '/blocklist-bundle/oauth',
-                'method'     => 'POST',
-                'controller' => 'BlocklistBundle:Api:Auth'
-            )
-        )
+        #'api'     => array(
+        #    'plugin_blocklist_oauth' => array(
+        #        'path'       => '/blocklist-bundle/oauth',
+        #        'method'     => 'POST',
+        #        'controller' => 'BlocklistBundle:Api:Auth'
+        #    )
+        #)
     ),
     'menu'        => array(
         'main'    => array(
