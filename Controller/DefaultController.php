@@ -25,9 +25,7 @@ class DefaultController extends CommonController
 
     public function verifyOAuth()
     {
-       \file_put_contents( __DIR__.'api.log', json_encode( $_POST ) );
-
-       global $settings;
+        global $settings;
 
         /**
          * @todo load this array from database or config file
@@ -41,7 +39,7 @@ class DefaultController extends CommonController
         /**
          * @todo Sanitize this URL. Make sure it starts with http/https and doesn't end with '/'
          */
-        $mauticBaseUrl = urlencode( rtrim( $_POST['Blocklist_mauticBaseUrl'] ) );
+        $mauticBaseUrl = \urlencode( \rtrim( $_POST['Blocklist_mauticBaseUrl'] ) );
 
         /**
          * @todo Change this to your app callback. It should be the same as you entered when you were creating your Mautic API credentials.
