@@ -26,7 +26,8 @@ Class ContactModel # extends AbstractCommonModel
     function init()
     {
         $arr = \serialize( array( 'leads' => array() ) );
-        $this->query( "INSERT INTO `blocklist`(`id`, `blocklist`) VALUES ( 1, {$arr} )" );
+        $sql = $this->db->prepare( "INSERT INTO `blocklist`(`id`, `blocklist`) VALUES ( 1, {$arr} )" );
+        $sql->execute();
     }
 
     function dostos()
