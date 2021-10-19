@@ -26,9 +26,10 @@ return array(
         ),
     ),
     'services'    => array(
-        'models'  => array(
-            'mautic.blocklist.model.contacts' => array(
-                'class' => 'MauticPlugin\BlocklistBundle\model\ContactsModel'
+        'model'   => array(
+            'mautic.blocklist.model.contact' => array(
+                'class'    => 'MauticPlugin\BlocklistBundle\Model\ContactModel',
+                'alias'    => 'blocklist.contact',
             )
         )
     ),
