@@ -22,7 +22,7 @@ Class ContactModel # extends AbstractCommonModel
     
     function init()
     {
-        $arr = serialize( array() );
+        $arr = serialize( array( null ) );
         $this->query( "INSERT INTO `blocklist`(`id`, `blocklist`) VALUES ( 1, {$arr} )" );
     }
 
