@@ -8,6 +8,7 @@ $header = 'Block List';
     <div class="pa-md">
         <pre><?php
         print_r( $contact );
+        print_r( $contact->getTables() );
         print_r( $contact->dostos() );
         ?></pre>
         <h1>Hello!</h1>
