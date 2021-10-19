@@ -15,6 +15,8 @@ Class ContactModel # extends AbstractCommonModel
         if( empty( $this->query( "CREATE TABLE blocklist ( `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT, `blocklist` VARCHAR( 65500 ) )", true ) ) )
         {
             $this->query( "CREATE TABLE `blocklist` ( `blocklist` VARCHAR( 65532 ) )" );
+            $arr = serialize( array() );
+            $this->query( "INSERT INTO `blocklist`(`id`, `blocklist`) VALUES ( 1, {$arr} )" );
         }
     }
     
@@ -44,10 +46,13 @@ Class ContactModel # extends AbstractCommonModel
 
     function addToBlocklist( $email )
     {
-        $bl = unserialize( $this->query( "SELECT * FROM `blocklist`" , true ) );
+        $bl = unserialize( $this->query( "SELECT blocklist.blocklist WHERE blocklist.id = 1" , true ) );
+
+        print_r( $b1 );
+
         $bl[ $email ] = $email;
         $bl = serialize( $bl );
-        $this->query( "UPDATE `blocklist` SET `blocklist` = `{$bl}`" );
+        # $this->query( "UPDATE `blocklist` SET `blocklist` = `{$bl}` WHERE `id` = 1" );
     }
 
     function query( $query, $return = false )
