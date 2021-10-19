@@ -8,7 +8,12 @@ class DefaultController extends CommonController
     public function mainAction()
     {
         return $this->delegateView(
-            array( 'contentTemplate' => 'BlocklistBundle:Main:main.html.php' )
+            array(
+                'viewParameters'  => array(
+                    'contact'  => $this->getModel( 'blocklist.contact' )
+                ),
+                'contentTemplate' => 'BlocklistBundle:Main:main.html.php',
+            )
         );
     }
 }
