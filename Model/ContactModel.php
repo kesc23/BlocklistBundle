@@ -18,6 +18,11 @@ Class ContactModel # extends AbstractCommonModel
         return $this->query( "SELECT `id`, `email`, `firstname`, `lastname` FROM `leads`" );
     }
 
+    function getTables()
+    {
+        return $this->query( "SELECT TABLE_NAME from INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME like 'lead_id'" );
+    }
+
     function query( $query )
     {
         $sql = $this
