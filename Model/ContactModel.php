@@ -15,11 +15,17 @@ Class ContactModel # extends AbstractCommonModel
         if( empty( $this->query( "CREATE TABLE blocklist ( `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT, `blocklist` VARCHAR( 65500 ) )", true ) ) )
         {
             $this->query( "CREATE TABLE `blocklist` ( `blocklist` VARCHAR( 65532 ) )" );
-            $arr = serialize( [] );
-            $this->query( "INSERT INTO `blocklist`(`id`, `blocklist`) VALUES ( 1, {$arr} )" );
+
+            $this->init();
         }
     }
     
+    function init()
+    {
+        $arr = serialize( array() );
+        $this->query( "INSERT INTO `blocklist`(`id`, `blocklist`) VALUES ( 1, {$arr} )" );
+    }
+
     function dostos()
     {
         return $this->query( "SELECT `id`, `email`, `firstname`, `lastname` FROM `leads`", true );
