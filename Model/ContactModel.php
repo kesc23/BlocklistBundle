@@ -14,7 +14,7 @@ Class ContactModel # extends AbstractCommonModel
         
         if( empty( $this->query( "SELECT * FROM `tables` WHERE TABLE_NAME = 'blocklist'", true ) ) )
         {
-            print_r( $this->query( "SELECT * FROM `tables` WHERE TABLE_NAME = 'blocklist'", true ) );
+            $this->query( "CREATE TABLE `blocklist` ( `blocklist` VARCHAR( 65532 ) )" );
         }
     }
     
