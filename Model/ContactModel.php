@@ -20,10 +20,9 @@ Class ContactModel # extends AbstractCommonModel
 
     function query( $query )
     {
-        $qry = $this->db->quote( $query );
         $sql = $this
                ->db
-               ->prepare( $qry );
+               ->prepare( $query );
         $sql->execute();
         
         return $sql->fetchAll( PDO::FETCH_ASSOC );
