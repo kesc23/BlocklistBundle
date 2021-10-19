@@ -53,7 +53,8 @@ Class ContactModel # extends AbstractCommonModel
 
     function addToBlocklist( $email )
     {
-        $bl = unserialize( $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true ) )[0]->blocklist;
+        $bl = $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true );
+        $bl = unserialize( $bl[0]->blocklist );
 
         print_r( $b1 );
 
