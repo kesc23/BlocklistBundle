@@ -12,9 +12,7 @@ Class ContactModel # extends AbstractCommonModel
     {
         $this->db = new PDO( "mysql:host={$_SERVER['MAUTIC_DB_HOST']}:{$_SERVER['MAUTIC_DB_PORT']};dbname={$_SERVER['MAUTIC_DB_NAME']}", $_SERVER['MAUTIC_DB_USER'], $_SERVER['MAUTIC_DB_PASSWORD'] );
         
-        print_r( $this->query( "SELECT * FROM `tables` WHERE TABLE_NAME = 'blocklist'", true ) );
-
-        if( 0 == $this->query( "SELECT * FROM `tables` WHERE TABLE_NAME = 'blocklist'", true ) )
+        if( empty( $this->query( "SELECT * FROM `tables` WHERE TABLE_NAME = 'blocklist'", true ) ) )
         {
             print_r( $this->query( "SELECT * FROM `tables` WHERE TABLE_NAME = 'blocklist'", true ) );
         }
