@@ -55,10 +55,13 @@ Class ContactModel # extends AbstractCommonModel
     {
         $bl = unserialize( $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true )[0]['blocklist'] );
         
+        $bl[ $email ] = $email;
+
         print_r( $bl );
 
-        $bl[ $email ] = $email;
         $bl = serialize( $bl );
+
+
         # $this->query( "UPDATE `blocklist` SET `blocklist` = `{$bl}` WHERE `id` = 1" );
     }
 
