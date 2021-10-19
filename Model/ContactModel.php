@@ -15,9 +15,15 @@ Class ContactModel # extends AbstractCommonModel
     
     function dostos()
     {
+        return $this->query( "SELECT `id`, `email`, `firstname`, `lastname` FROM `leads`" );
+    }
+
+    function query( $query )
+    {
+        $qry = $this->db->quote( $query );
         $sql = $this
                ->db
-               ->prepare( "SELECT `id`, `email`, `firstname`, `lastname` FROM `leads`" );
+               ->prepare( $qry );
         $sql->execute();
         
         return $sql->fetchAll( PDO::FETCH_ASSOC );
