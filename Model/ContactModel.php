@@ -20,29 +20,29 @@ Class ContactModel # extends AbstractCommonModel
         }
     }
     
-    function init()
+    public function init()
     {
         $arr = \serialize( array() );
         $sql = $this->db->prepare( "INSERT INTO `blocklist`(`id`, `blocklist`) VALUES ( 1, '{$arr}' )" );
         $sql->execute();
     }
 
-    function dostos()
+    public function dostos()
     {
         return $this->query( "SELECT `id`, `email`, `firstname`, `lastname` FROM `leads`", true );
     }
 
-    function getTables()
+    public function getTables()
     {
         return $this->query( "SELECT TABLE_NAME from INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME like 'lead_id'", true );
     }
 
-    function getLeads()
+    public function getLeads()
     {
         return $this->query( "SELECT `id`, `email` FROM `leads`", true );
     }
 
-    function deleteLeads( $ids, $table )
+    public function deleteLeads( $ids, $table )
     {
         if( is_string( $ids ) || is_int( $ids ) ):
             $this->query( "DELETE FROM {$table} WHERE `lead_id` = $ids " );
@@ -51,21 +51,20 @@ Class ContactModel # extends AbstractCommonModel
         endif;
     }
 
-    function addToBlocklist( $email )
+    public function addToBlocklist( $email )
     {
         $bl = unserialize( $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true )[0]['blocklist'] );
-        
-        $bl[ $email ] = $email;
-
-        print_r( $bl );
-
+        $bl[$email] = $email;
         $bl = serialize( $bl );
-
-
-        # $this->query( "UPDATE `blocklist` SET `blocklist` = `{$bl}` WHERE `id` = 1" );
+        $this->query( "UPDATE `blocklist` SET `blocklist` = '{$bl}' WHERE `id` = 1" );
     }
 
-    function query( $query, $return = false )
+    public function getFromBlocklist()
+    {
+        return unserialize( $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true )[0]['blocklist'] );
+    }
+
+    public function query( $query, $return = false )
     {
         $sql = $this
                ->db
