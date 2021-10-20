@@ -11,15 +11,16 @@ $header = 'Block List';
         # print_r( $contact->getTables() );
         # print_r( $contact->dostos() );
         ?></pre>-->
-        <h1><?php echo $view['translator']->trans('plugin.helloworld.titleh1') ?></h1>
+        <h1><?php echo $view['translator']->trans('plugin.blocklist.titleh1') ?></h1>
         <div class="dashboard-widgets cards">
             <div class="card-flex widget" style="width: 50%">
                 <div class="card" style="padding: 5px">
                 <form action="/s/blocklist">
-                <fieldset>
-                    <label for="leadsarea"><?php echo $view['translator']->trans('plugin.helloworld.ta_labelmsg') ?></label>
-                    <textarea class="form-control" name="leadsarea" id="leadsarea" cols="30" rows="10"></textarea>
-                </fieldset>
+                    <fieldset>
+                        <label for="leadsarea"><?php echo $view['translator']->trans('plugin.blocklist.ta_labelmsg') ?></label>
+                        <textarea class="form-control" name="leadsarea" id="leadsarea" cols="30" rows="10"></textarea>
+                    </fieldset>
+                    <button class="btn btn-success" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.subbtn') ?></button>
                 </form>
                 </div>
             </div>
