@@ -64,6 +64,40 @@ Class ContactModel # extends AbstractCommonModel
         return unserialize( $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true )[0]['blocklist'] );
     }
 
+    public function crossLeads()
+    {
+        $blocked = $this->getFromBlocklist();
+        $leads   = $this->getLeads();
+        $data    = array();
+
+        foreach( $leads as $lead )
+        {
+            if( in_array( $lead['email'], $blocked ) )
+            {
+                $data['emails'][] = $lead['email'];
+                $data['ids'][]    = (int) $lead['id'];
+                $data['name'][]   = "{$lead['firstname']} {$lead['lastname']}";
+            }
+        }
+
+        return $data;
+    }
+
+    function getLeadEmails()
+    {
+        return $this->crossLeads()['emails'];
+    }
+
+    function getLeadIds()
+    {
+        return $this->crossLeads()['ids'];
+    }
+
+    function getLeadNames()
+    {
+        return $this->crossLeads()['name'];
+    }
+
     public function query( $query, $return = false )
     {
         $sql = $this
