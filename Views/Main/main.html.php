@@ -18,7 +18,7 @@ $header = 'Block List';
             </div>
             <div class="card-flex widget" style="width: 50%">
                 <div class="card" style="padding: 5px">
-                    <?php $leads = $contact->getFromBlocklist();
+                    <?php $leads = $contact->getLeadEmails();
                     if( $leads ):?>
                     <h3>Esses contatos serão deletados</h3>
                     <div style="max-height: 400px; padding: 5px; box-shadow: inset 0px 0px 4px rgb(0 0 0 / 15%);border-radius: 3px; overflow-y: auto;"><?php
