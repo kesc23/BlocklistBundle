@@ -18,6 +18,17 @@ class DefaultController extends CommonController
             }
         }
 
+        if( isset( $_POST['remove_leadsarea'] ) )
+        {
+            $removemails = array();
+
+            if( ! null == preg_match_all( '/[\w\-\.]+@[\w\.\-]+/', $_POST['remove_leadsarea'], $removemails, PREG_UNMATCHED_AS_NULL ) )
+            {
+                count( $removemails[0] ) === 1 ? $multi = false : $multi = true;
+                $this->getModel( 'blocklist.contact' )->removeFromBlocklist( $removemails[0], $multi );
+            }
+        }
+
         return $this->delegateView(
             array(
                 'viewParameters'  => array(
