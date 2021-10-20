@@ -15,13 +15,25 @@ $header = 'Block List';
         <div class="dashboard-widgets cards">
             <div class="card-flex widget" style="width: 50%">
                 <div class="card" style="padding: 5px">
-                <form action="/s/blocklist" method="post">
-                    <fieldset>
-                        <label for="leadsarea"><?php echo $view['translator']->trans('plugin.blocklist.ta_labelmsg') ?></label>
-                        <textarea class="form-control" name="leadsarea" id="leadsarea" cols="30" rows="10"></textarea>
-                    </fieldset>
-                    <button class="btn btn-success" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.subbtn') ?></button>
-                </form>
+                    <form action="/s/blocklist" method="post">
+                        <fieldset>
+                            <label for="leadsarea"><?php echo $view['translator']->trans('plugin.blocklist.ta_labelmsg') ?></label>
+                            <textarea class="form-control" name="leadsarea" id="leadsarea" cols="30" rows="10"></textarea>
+                        </fieldset>
+                        <button class="btn btn-success" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.subbtn') ?></button>
+                    </form>
+                </div>
+                <div class="card" style="padding: 5px">
+                    <details>
+                        <summary><?php echo $view['translator']->trans('plugin.blocklist.remove_call') ?></summary>
+                        <form action="/s/blocklist" method="post">
+                            <fieldset>
+                                <label for="remove_leadsarea"><?php echo $view['translator']->trans('plugin.blocklist.ta_labelmsg') ?></label>
+                                <textarea class="form-control" name="remove_leadsarea" id="remove_leadsarea" cols="30" rows="10"></textarea>
+                            </fieldset>
+                            <button class="btn btn-success" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.remove_subbtn') ?></button>
+                        </form>
+                    </details>
                 </div>
             </div>
             <div class="card-flex widget" style="width: 50%">
