@@ -20,23 +20,12 @@ class DefaultController extends CommonController
     public function deleteAction()
     {
         $contact = $this->getModel( 'blocklist.contact' );
-        $blocked = $contact->getFromBlocklist();
-        $leads   = $contact->getLeads();
+        $ids     = $contact->getLeadIds();
         $tables  = array();
-        $ids     = array();
-
 
         foreach( $contact->getTables() as $table )
         {
             $tables[] = $table['TABLE_NAME'];
-        }
-
-        foreach( $leads as $lead )
-        {
-            if( in_array( $lead['email'], $blocked ) )
-            {
-                $ids[] = (int) $lead['id'];
-            }
         }
 
         print_r( $ids ); print_r( $table );
