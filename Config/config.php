@@ -25,17 +25,11 @@ return array(
                     'id'        => 'plugin_blocklist_index',
                     'iconClass' => 'fa-ban',
                     'route'     => 'plugin_blocklist_main',
-                ),
-            ),
-        ),
-        'main'    => array(
-            'priority' => 4,
-            'items' => array(
-                'plugin.blocklist.clean' => array(
-                    'id'        => 'plugin_blocklist_index',
-                    'iconClass' => 'fa-brush',
-                    'route'     => 'plugin_blocklist_clean',
-                    'parent'    => 'plugin.blocklist.index'
+                    'children'  => array(
+                        'plugin.blocklist.clean' => array(
+                            'route' => 'plugin_blocklist_clean'
+                        )
+                    )
                 ),
             ),
         ),
