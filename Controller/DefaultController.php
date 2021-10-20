@@ -7,7 +7,17 @@ class DefaultController extends CommonController
 {
     public function mainAction()
     {
-        print_r( $_POST );
+        if( isset( $_POST['leadsarea'] ) )
+        {
+            $emails = \preg_match_all( '/[\w]+@[\w\.\-]+/', $_POST['leadsarea'] );
+
+            if( ! empty( $emails ) )
+            {
+                count( $emails ) === 1 ? $multi = false : $multi = true;
+                $this->getModel( 'blocklist.contact' )->addToBlocklist( $emails, $multi );
+            }
+        }
+
         return $this->delegateView(
             array(
                 'viewParameters'  => array(
