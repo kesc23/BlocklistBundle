@@ -67,6 +67,22 @@ Class ContactModel # extends AbstractCommonModel
         $this->query( "UPDATE `blocklist` SET `blocklist` = '{$bl}' WHERE `id` = 1" );
     }
 
+    public function removeFromBlocklist( $email, $multi = false )
+    {
+        $bl = unserialize( $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true )[0]['blocklist'] );
+        if( true === $multi ):
+            foreach( $email as $mail )
+            {
+                unset( $bl[ $mail ] );
+            }
+        else:
+            unset( $bl[ $email[0] ] );
+        endif;
+
+        $bl = serialize( $bl );
+        $this->query( "UPDATE `blocklist` SET `blocklist` = '{$bl}' WHERE `id` = 1" );
+    }
+
     public function getFromBlocklist()
     {
         return unserialize( $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true )[0]['blocklist'] );
