@@ -7,6 +7,7 @@ class DefaultController extends CommonController
 {
     public function mainAction()
     {
+        print_r( $_POST );
         return $this->delegateView(
             array(
                 'viewParameters'  => array(
