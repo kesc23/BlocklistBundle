@@ -12,10 +12,12 @@ $header = 'Block List';
         print_r( $contact->dostos() );
         ?></pre>
         <h1>blocklist title!</h1>
-        <div>
-            <div class="card" style="width: 50%"></div>
-            <div>
-                <div class="card" style="width: 50%">
+        <div class="dashboard-widgets cards">
+            <div class="card" style="width: 50%">
+                <div></div>
+            </div>
+            <div class="card" style="width: 50%">
+                <div>
                     <?php $leads = $contact->getFromBlocklist();
                     if( $leads ):?>
                     <h3>Esses contatos serão deletados</h3>
