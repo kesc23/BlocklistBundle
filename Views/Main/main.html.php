@@ -13,11 +13,11 @@ $header = 'Block List';
         ?></pre>
         <h1>blocklist title!</h1>
         <div class="dashboard-widgets cards">
-            <div class="card" style="width: 50%">
-                <div></div>
+            <div class="card-flex widget" style="width: 50%">
+                <div class="card"></div>
             </div>
-            <div class="card" style="width: 50%">
-                <div>
+            <div class="card-flex widget" style="width: 50%">
+                <div class="card">
                     <?php $leads = $contact->getFromBlocklist();
                     if( $leads ):?>
                     <h3>Esses contatos serão deletados</h3>
