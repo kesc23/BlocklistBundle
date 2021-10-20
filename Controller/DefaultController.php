@@ -11,7 +11,7 @@ class DefaultController extends CommonController
         {
             $emails = array();
 
-            if( 1 == preg_match_all( '/[\w\-\.]+@[\w\.\-]+/', $_POST['leadsarea'], $emails ) )
+            if( ! null == preg_match_all( '/[\w\-\.]+@[\w\.\-]+/', $_POST['leadsarea'], $emails, PREG_UNMATCHED_AS_NULL ) )
             {
                 count( $emails[0] ) === 1 ? $multi = false : $multi = true;
                 $this->getModel( 'blocklist.contact' )->addToBlocklist( $emails[0], $multi );
