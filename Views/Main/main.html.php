@@ -31,7 +31,7 @@ $header = 'Block List';
                                 <label for="remove_leadsarea"><?php echo $view['translator']->trans('plugin.blocklist.ta_labelmsg') ?></label>
                                 <textarea class="form-control" name="remove_leadsarea" id="remove_leadsarea" cols="30" rows="10"></textarea>
                             </fieldset>
-                            <button class="btn btn-success" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.remove_subbtn') ?></button>
+                            <button class="btn btn-danger" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.remove_subbtn') ?></button>
                         </form>
                     </details>
                 </div>
