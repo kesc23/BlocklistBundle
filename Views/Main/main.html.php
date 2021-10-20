@@ -11,6 +11,24 @@ $header = 'Block List';
         print_r( $contact->getTables() );
         print_r( $contact->dostos() );
         ?></pre>
-        <h1>Hello!</h1>
+        <h1>blocklist title!</h1>
+        <div style="display: grid; template-auto-columns: 50% 50%">
+            <div></div>
+            <div>
+                <div>
+                    <?php $leads = $contact->getFromBlocklist();
+                    if( $leads ):?>
+                    <h3>Esses contatos serão deletados</h3>
+                    <div style="max-height: 400px"><?php
+                    
+                        foreach( $leads as $lead )
+                        {
+                            echo "<p>Email: {$lead}</p>";
+                        }
+                    ?></div><?php
+                    endif;
+                ?></div>
+            </div>
+        </div>
     </div>
 </div>
