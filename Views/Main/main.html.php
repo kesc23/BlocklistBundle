@@ -14,14 +14,14 @@ $header = 'Block List';
         <h1>blocklist title!</h1>
         <div class="dashboard-widgets cards">
             <div class="card-flex widget" style="width: 50%">
-                <div class="card"></div>
+                <div class="card" style="padding: 5px"></div>
             </div>
             <div class="card-flex widget" style="width: 50%">
-                <div class="card">
+                <div class="card" style="padding: 5px">
                     <?php $leads = $contact->getFromBlocklist();
                     if( $leads ):?>
                     <h3>Esses contatos serão deletados</h3>
-                    <div style="max-height: 400px"><?php
+                    <div style="max-height: 400px; padding: 5px; box-shadow: inset 0px 0px 4px rgb(0 0 0 / 15%);border-radius: 3px; overflow-y: auto;"><?php
                         foreach( $leads as $lead )
                         {
                             echo "<p>Email: {$lead}</p>";
