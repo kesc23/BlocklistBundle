@@ -14,7 +14,14 @@ $header = 'Block List';
         <h1><?php echo $view['translator']->trans('plugin.helloworld.titleh1') ?></h1>
         <div class="dashboard-widgets cards">
             <div class="card-flex widget" style="width: 50%">
-                <div class="card" style="padding: 5px"></div>
+                <div class="card" style="padding: 5px">
+                <form action="/s/blocklist">
+                <fieldset>
+                    <label for="leadsarea"><?php echo $view['translator']->trans('plugin.helloworld.ta_labelmsg') ?></label>
+                    <textarea name="leadsarea" id="leadsarea" cols="30" rows="10"></textarea>
+                </fieldset>
+                </form>
+                </div>
             </div>
             <div class="card-flex widget" style="width: 50%">
                 <div class="card" style="padding: 5px">
