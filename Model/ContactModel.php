@@ -60,7 +60,7 @@ Class ContactModel # extends AbstractCommonModel
                 $bl[$mail] = $mail;
             }
         else:
-            $bl[$email] = $email;
+            $bl[$email] = $email[0];
         endif;
 
         $bl = serialize( $bl );
