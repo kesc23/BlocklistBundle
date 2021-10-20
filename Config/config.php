@@ -7,9 +7,13 @@ return array(
     'version'     => '1.0.0',
     'routes'      => array(
         'main'    => array(
-            'plugin_blocklist_main' => array(
+            'plugin_blocklist_main'  => array(
                 'path'       => "/blocklist",
                 'controller' => 'BlocklistBundle:Default:main'
+            ),
+            'plugin_blocklist_clean' => array(
+                'path'       => '/blocklist/clean',
+                'controller' => 'BlocklistBundle:Default:delete'
             )
         )
     ),
@@ -21,6 +25,17 @@ return array(
                     'id'        => 'plugin_blocklist_index',
                     'iconClass' => 'fa-ban',
                     'route'     => 'plugin_blocklist_main',
+                ),
+            ),
+        ),
+        'main'    => array(
+            'priority' => 4,
+            'items' => array(
+                'plugin.blocklist.clean' => array(
+                    'id'        => 'plugin_blocklist_index',
+                    'iconClass' => 'fa-brush',
+                    'route'     => 'plugin_blocklist_clean',
+                    'parent'    => 'plugin.blocklist.index'
                 ),
             ),
         ),
