@@ -18,7 +18,7 @@ $header = 'Block List';
                 <form action="/s/blocklist">
                 <fieldset>
                     <label for="leadsarea"><?php echo $view['translator']->trans('plugin.helloworld.ta_labelmsg') ?></label>
-                    <textarea name="leadsarea" id="leadsarea" cols="30" rows="10"></textarea>
+                    <textarea class="form-control" name="leadsarea" id="leadsarea" cols="30" rows="10"></textarea>
                 </fieldset>
                 </form>
                 </div>
