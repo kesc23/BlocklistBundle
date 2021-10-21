@@ -7,6 +7,7 @@ use \PDO;
 Class ContactModel # extends AbstractCommonModel
 {
     public $db;
+    const BLOCKLIST_DIR = __DIR__;
     
     public function __construct()
     {
