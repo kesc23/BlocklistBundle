@@ -24,24 +24,7 @@ return array(
                 'plugin.blocklist.index' => array(
                     'id'        => 'plugin_blocklist_index',
                     'iconClass' => 'fa-ban',
-                    'children'  => array(
-                        'plugin.blocklist.clean' => array(
-                            'route' => 'plugin_blocklist_clean'
-                        ),
-                        'plugin.blocklist.main' => array(
-                            'route' => 'plugin_blocklist_main'
-                        )
-                    )
-                ),
-                'plugin.blocklist.main' => array(
-                    'id'        => 'plugin_blocklist_main',
-                    'route'     => 'plugin_blocklist_main',
-                    'parent'    => 'plugin.blocklist.index'
-                ),
-                'plugin.blocklist.clean' => array(
-                    'id'        => 'plugin_blocklist_clean',
-                    'route'     => 'plugin_blocklist_clean',
-                    'parent'    => 'plugin.blocklist.index'
+                    'route'     => 'plugin_blocklist_main'
                 ),
             ),
         ),
