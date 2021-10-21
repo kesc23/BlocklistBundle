@@ -31,8 +31,8 @@ return array(
                     'route'     => 'plugin_blocklist_main',
                     'children'  => array(
                         'plugin.blocklist.cleaned' => array(
-
-                            'route' => 'plugin_blocklist_cleaned'
+                            'parent' => 'plugin.blocklist.index',
+                            'route'  => 'plugin_blocklist_cleaned'
                         ),
                     ),
                 ),
