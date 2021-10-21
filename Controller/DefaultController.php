@@ -62,4 +62,16 @@ class DefaultController extends CommonController
             )
         );
     }
+
+    public function cleanedAction()
+    {
+        return $this->delegateView(
+            array(
+                'viewParameters'  => array(
+                    'contact'  => $this->getModel( 'blocklist.contact' )
+                ),
+                'contentTemplate' => 'BlocklistBundle:Main:cleaned.html.php',
+            )
+        ); 
+    }
 }

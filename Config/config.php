@@ -14,7 +14,11 @@ return array(
             'plugin_blocklist_clean' => array(
                 'path'       => '/blocklist/clean',
                 'controller' => 'BlocklistBundle:Default:delete'
-            )
+            ),
+            'plugin_blocklist_cleaned' => array(
+                'path'       => '/blocklist/cleaned',
+                'controller' => 'BlocklistBundle:Default:cleaned'
+            ),
         )
     ),
     'menu'        => array(
@@ -24,7 +28,13 @@ return array(
                 'plugin.blocklist.index' => array(
                     'id'        => 'plugin_blocklist_index',
                     'iconClass' => 'fa-ban',
-                    'route'     => 'plugin_blocklist_main'
+                    'route'     => 'plugin_blocklist_main',
+                    'children'  => array(
+                        'plugin.blocklist.cleaned' => array(
+
+                            'route' => 'plugin_blocklist_cleaned'
+                        ),
+                    ),
                 ),
             ),
         ),
