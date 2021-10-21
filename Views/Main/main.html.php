@@ -46,16 +46,12 @@ $header = 'Block List';
                         {
                             echo "<p>Email: {$lead}</p>";
                         }
-                    ?></div><?php
+                    ?></div>
+                    <form action="/s/blocklist/clean">
+                        <button class="btn btn-danger" type="submit">plugin.blocklist.block_em</button>
+                    </form><?php
                     endif;
                 ?></div>
-                <div class="dashboard-widgets cards">
-                    <div class="card" style="width: 50%">
-                        <form action="/s/blocklist/clean">
-                            <button class="button btn-danger" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.block_em') ?></button>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
