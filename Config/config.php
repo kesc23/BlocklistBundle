@@ -38,6 +38,10 @@ return array(
                         ),
                     ),
                 ),
+                'plugin.blocklist.cleaned' => array(
+                    'parent' => 'plugin.blocklist.index',
+                    'route'  => 'plugin_blocklist_cleaned'
+                ),
                 'plugin.blocklist.main' => array(
                     'parent' => 'plugin.blocklist.index',
                     'route'  => 'plugin_blocklist_main'
