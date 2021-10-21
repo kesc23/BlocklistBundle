@@ -90,6 +90,24 @@ Class ContactModel # extends AbstractCommonModel
         return unserialize( file_get_contents( "{$this->BLOCKLIST_DIR}/list/list.txt" ) );
     }
 
+    public function getOnlyDeletedLeads()
+    {
+        $leads       = $this->getLeadEmails();
+        $inBlocklist = $this->getFromBlocklist();
+
+        $returnLeads = [];
+
+        foreach( $inBlocklist as $lead )
+        {
+            if( in_array( $lead, $leads ) )
+            {
+                $returnLeads[] = $lead;
+            }
+        }
+        
+        return $returnLeads;
+    }
+
     public function crossLeads()
     {
         $blocked = $this->getFromBlocklist();

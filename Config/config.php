@@ -2,7 +2,10 @@
 
 return array(
     'name'        => 'Blocklist',
-    'description' => 'Este plugin cria uma blacklist de emails os quais não terão dados mantidos nem receberao conteúdo das campanhas.',
+    'description' => 'Este plugin cria uma blacklist de emails os quais não terão dados mantidos nem receberao conteúdo das campanhas
+---
+<div><p>Código fonte no Github<p><a class="btn btn-success" href="https://github.com/kesc23/block-list">Github<i class="fa fa-github"></i></a></div>
+    ',
     'author'      => 'Kesc23 (Kevin Campos)',
     'version'     => '1.0.0',
     'routes'      => array(
