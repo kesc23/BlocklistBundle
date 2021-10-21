@@ -31,10 +31,13 @@ return array(
                     'route'     => 'plugin_blocklist_main',
                     'children'  => array(
                         'plugin.blocklist.cleaned' => array(
-                            'parent' => 'plugin.blocklist.index',
                             'route'  => 'plugin_blocklist_cleaned'
                         ),
                     ),
+                ),
+                'plugin.blocklist.cleaned' => array(
+                    'parent' => 'plugin.blocklist.index',
+                    'route'  => 'plugin_blocklist_cleaned'
                 ),
             ),
         ),
