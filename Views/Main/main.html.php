@@ -25,7 +25,7 @@ $header = 'Block List';
                 </div>
                 <div class="card" style="padding: 5px">
                     <details>
-                        <summary><?php echo $view['translator']->trans('plugin.blocklist.remove_call') ?></summary>
+                        <summary style="cursor: pointer"><?php echo $view['translator']->trans('plugin.blocklist.remove_call') ?></summary>
                         <form action="/s/blocklist" method="post">
                             <fieldset>
                                 <label for="remove_leadsarea"><?php echo $view['translator']->trans('plugin.blocklist.ta_labelmsg') ?></label>
@@ -49,6 +49,13 @@ $header = 'Block List';
                     ?></div><?php
                     endif;
                 ?></div>
+                <div class="dashboard-widgets cards">
+                    <div class="card" style="width: 50%">
+                        <form action="/s/blocklist/clean">
+                            <button class="button btn-danger" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.block_em') ?></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
