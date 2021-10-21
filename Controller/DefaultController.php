@@ -55,6 +55,6 @@ class DefaultController extends CommonController
             $contact->deleteLeads( $ids, $table );
         }
 
-        location( "/blocklist/clean" );
+        location( "/s/blocklist" );
     }
 }
