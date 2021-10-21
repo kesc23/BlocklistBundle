@@ -48,7 +48,7 @@ $header = 'Block List';
                         }
                     ?></div>
                     <form action="/s/blocklist/clean">
-                        <button class="btn btn-danger" type="submit">plugin.blocklist.block_em</button>
+                        <button class="btn btn-danger" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.block_em') ?></button>
                     </form><?php
                     endif;
                 ?></div>
