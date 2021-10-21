@@ -99,12 +99,12 @@ Class ContactModel # extends AbstractCommonModel
 
         foreach( $inBlocklist as $lead )
         {
-            if( in_array( $lead, $leads ) )
+            if( ! in_array( $lead, $leads ) )
             {
                 $returnLeads[] = $lead;
             }
         }
-        
+
         return $returnLeads;
     }
 
