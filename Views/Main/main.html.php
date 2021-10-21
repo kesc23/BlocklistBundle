@@ -20,6 +20,7 @@ $header = 'Block List';
                             <label for="leadsarea"><?php echo $view['translator']->trans('plugin.blocklist.ta_labelmsg') ?></label>
                             <textarea class="form-control" name="leadsarea" id="leadsarea" cols="30" rows="10"></textarea>
                         </fieldset>
+                        <hr style="margin: 3px; visibility: hidden">
                         <button class="btn btn-success" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.subbtn') ?></button>
                     </form>
                 </div>
@@ -31,6 +32,7 @@ $header = 'Block List';
                                 <label for="remove_leadsarea"><?php echo $view['translator']->trans('plugin.blocklist.ta_labelmsg') ?></label>
                                 <textarea class="form-control" name="remove_leadsarea" id="remove_leadsarea" cols="30" rows="10"></textarea>
                             </fieldset>
+                            <hr style="margin: 3px; visibility: hidden">
                             <button class="btn btn-danger" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.remove_subbtn') ?></button>
                         </form>
                     </details>
@@ -47,6 +49,7 @@ $header = 'Block List';
                             echo "<p>Email: {$lead}</p>";
                         }
                     ?></div>
+                    <hr style="margin: 3px; visibility: hidden">
                     <form action="/s/blocklist/clean">
                         <button class="btn btn-danger" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.block_em') ?></button>
                     </form><?php
