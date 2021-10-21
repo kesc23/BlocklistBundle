@@ -6,11 +6,6 @@ $header = 'Block List';
 ?>
 <div class="content-body">
     <div class="pa-md">
-        <!-- <pre><?php  
-        # print_r( $contact->addToBlocklist( 'kesc23@hotmail.com' ) );
-        # print_r( $contact->getTables() );
-        # print_r( $contact->dostos() );
-        ?></pre> -->
         <h1><?php echo $view['translator']->trans('plugin.blocklist.titleh1') ?></h1>
         <div class="dashboard-widgets cards">
             <div class="card-flex widget" style="width: 50%">
