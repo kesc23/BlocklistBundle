@@ -39,9 +39,9 @@ $header = 'Block List';
                 </div>
             </div>
             <div class="card-flex widget" style="width: 50%">
+                <?php $leads = $contact->getLeadEmails();
+                if( $leads ):?>
                 <div class="card" style="padding: 5px">
-                    <?php $leads = $contact->getLeadEmails();
-                    if( $leads ):?>
                     <h3><?php echo $view['translator']->trans('plugin.blocklist.deletemsg') ?></h3>
                     <div style="max-height: 400px; padding: 5px; box-shadow: inset 0px 0px 4px rgb(0 0 0 / 15%);border-radius: 3px; overflow-y: auto;"><?php
                         foreach( $leads as $lead )
@@ -52,10 +52,11 @@ $header = 'Block List';
                     <hr style="margin: 3px; visibility: hidden">
                     <form action="/s/blocklist/clean">
                         <button class="btn btn-danger" type="submit"><?php echo $view['translator']->trans('plugin.blocklist.block_em') ?></button>
-                    </form><?php
+                    </form>
+                </div>
+                <?php
                     endif;
-                ?></div>
-            </div>
+            ?></div>
         </div>
     </div>
 </div>
