@@ -7,11 +7,13 @@ use \PDO;
 Class ContactModel # extends AbstractCommonModel
 {
     public $db;
-    public $BLOCKLIST_DIR = __DIR__;
+    public $BLOCKLIST_DIR;
     
     public function __construct()
     {
         $this->db = new PDO( "mysql:host={$_SERVER['MAUTIC_DB_HOST']}:{$_SERVER['MAUTIC_DB_PORT']};dbname={$_SERVER['MAUTIC_DB_NAME']}", $_SERVER['MAUTIC_DB_USER'], $_SERVER['MAUTIC_DB_PASSWORD'] );
+        
+        $this->BLOCKLIST_DIR = dirname( __DIR__ );
         
         if( empty( $this->query( "CREATE TABLE blocklist ( `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT, `blocklist` VARCHAR( 65500 ) ) ENGINE = InnoDB", true ) ) )
         {
