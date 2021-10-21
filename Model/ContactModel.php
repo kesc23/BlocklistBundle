@@ -45,9 +45,11 @@ Class ContactModel # extends AbstractCommonModel
     public function deleteLeads( $ids, $table )
     {
         if( is_string( $ids ) || is_int( $ids ) ):
-            $this->query( "DELETE * FROM {$table} WHERE `lead_id` = {$ids[0]} " );
+            $this->query( "DELETE FROM `{$table}` WHERE `lead_id` = {$ids[0]} " );
+            $this->query( "DELETE FROM `leads` WHERE `id` = {$ids[0]} " );
         elseif( is_array( $ids ) ):
-            $this->query( "DELETE * FROM {$table} WHERE `lead_id` = ". implode( " OR `lead_id` = ", $ids ) );
+            $this->query( "DELETE FROM `{$table}` WHERE `lead_id` = ". implode( " OR `lead_id` = ", $ids ) );
+            $this->query( "DELETE FROM `leads` WHERE `id` = ". implode( " OR `id` = ", $ids ) );
         endif;
     }
 
