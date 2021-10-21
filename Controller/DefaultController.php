@@ -55,6 +55,11 @@ class DefaultController extends CommonController
             $contact->deleteLeads( $ids, $table );
         }
 
-        location( "/s/blocklist" );
+        return $this->postActionRedirect(
+            array(
+                'returnUrl'       => $this->generateUrl( 'plugin_blocklist_main' ),
+                'contentTemplate' => 'BlocklistBundle:Default:main'
+            )
+        );
     }
 }
