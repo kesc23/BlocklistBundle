@@ -33,11 +33,14 @@ return array(
                         'plugin.blocklist.cleaned' => array(
                             'route'  => 'plugin_blocklist_cleaned'
                         ),
+                        'plugin.blocklist.main' => array(
+                            'route'  => 'plugin_blocklist_main'
+                        ),
                     ),
                 ),
-                'plugin.blocklist.cleaned' => array(
+                'plugin.blocklist.main' => array(
                     'parent' => 'plugin.blocklist.index',
-                    'route'  => 'plugin_blocklist_cleaned'
+                    'route'  => 'plugin_blocklist_main'
                 ),
             ),
         ),
