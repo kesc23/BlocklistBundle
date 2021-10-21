@@ -14,11 +14,9 @@ Class ContactModel # extends AbstractCommonModel
         $this->db = new PDO( "mysql:host={$_SERVER['MAUTIC_DB_HOST']}:{$_SERVER['MAUTIC_DB_PORT']};dbname={$_SERVER['MAUTIC_DB_NAME']}", $_SERVER['MAUTIC_DB_USER'], $_SERVER['MAUTIC_DB_PASSWORD'] );
         
         $this->BLOCKLIST_DIR = dirname( __DIR__ );
-        
-        if( empty( $this->query( "CREATE TABLE blocklist ( `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT, `blocklist` VARCHAR( 65500 ) ) ENGINE = InnoDB", true ) ) )
-        {
-            $this->query( "CREATE TABLE `blocklist` ( `blocklist` VARCHAR( 65532 ) )" );
 
+        if( @ ! is_array( $this->getFromBlocklist() ) )
+        {
             $this->init();
         }
     }
@@ -26,8 +24,7 @@ Class ContactModel # extends AbstractCommonModel
     public function init()
     {
         $arr = \serialize( array() );
-        $sql = $this->db->prepare( "INSERT INTO `blocklist`(`id`, `blocklist`) VALUES ( 1, '{$arr}' )" );
-        $sql->execute();
+        file_put_contents( "{$this->BLOCKLIST_DIR}/list/list.txt", $arr );
     }
 
     public function dostos()
@@ -56,7 +53,7 @@ Class ContactModel # extends AbstractCommonModel
 
     public function addToBlocklist( $email, $multi = false )
     {
-        $bl = unserialize( $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true )[0]['blocklist'] );
+        $bl = $this->getFromBlocklist();
         if( true === $multi ):
             foreach( $email as $mail )
             {
@@ -67,12 +64,12 @@ Class ContactModel # extends AbstractCommonModel
         endif;
 
         $bl = serialize( $bl );
-        $this->query( "UPDATE `blocklist` SET `blocklist` = '{$bl}' WHERE `id` = 1" );
+        file_put_contents( "{$this->BLOCKLIST_DIR}/list/list.txt", $bl );
     }
 
     public function removeFromBlocklist( $email, $multi = false )
     {
-        $bl = unserialize( $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true )[0]['blocklist'] );
+        $bl = $this->getFromBlocklist();
         if( true === $multi ):
             foreach( $email as $mail )
             {
@@ -83,12 +80,12 @@ Class ContactModel # extends AbstractCommonModel
         endif;
 
         $bl = serialize( $bl );
-        $this->query( "UPDATE `blocklist` SET `blocklist` = '{$bl}' WHERE `id` = 1" );
+        file_put_contents( "{$this->BLOCKLIST_DIR}/list/list.txt", $bl );
     }
 
     public function getFromBlocklist()
     {
-        return unserialize( $this->query( "SELECT `blocklist` FROM `blocklist` WHERE id = 1" , true )[0]['blocklist'] );
+        return unserialize( file_get_contents( "{$this->BLOCKLIST_DIR}/list/list.txt" ) );
     }
 
     public function crossLeads()
