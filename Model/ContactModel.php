@@ -2,9 +2,8 @@
 
 namespace MauticPlugin\BlocklistBundle\Model;
 use \PDO;
-# use Mautic\CoreBundle\Model\AbstractCommonModel;
 
-Class ContactModel # extends AbstractCommonModel
+class ContactModel
 {
     public $db;
     public $BLOCKLIST_DIR;
@@ -42,15 +41,35 @@ Class ContactModel # extends AbstractCommonModel
         return $this->query( "SELECT `id`, `email` FROM `leads`", true );
     }
 
-    public function deleteLeads( $ids, $table )
+    public function deleteLeadData( $ids, $table )
     {
         if( is_string( $ids ) || is_int( $ids ) ):
-            $this->query( "DELETE FROM `{$table}` WHERE `lead_id` = {$ids[0]} " );
-            $this->query( "DELETE FROM `leads` WHERE `id` = {$ids[0]} " );
+            $this->query( "DELETE FROM `{$table}` WHERE `lead_id` = {$ids} " );
         elseif( is_array( $ids ) ):
             $this->query( "DELETE FROM `{$table}` WHERE `lead_id` = ". implode( " OR `lead_id` = ", $ids ) );
+        endif;
+    }
+    
+    public function deleteLead( $ids )
+    {
+        if( is_string( $ids ) || is_int( $ids ) ):
+            $this->query( "DELETE FROM `leads` WHERE `id` = {$ids} " );
+        elseif( is_array( $ids ) ):
             $this->query( "DELETE FROM `leads` WHERE `id` = ". implode( " OR `id` = ", $ids ) );
         endif;
+    }
+
+    public function deleteLeads( $ids, $tables )
+    {
+        if( is_array( $tables ) ):
+            foreach( $tables as $table )
+            {
+                $this->deleteLeadData( $ids, $table );
+            }
+        elseif( is_string( $tables ) ):
+            $this->deleteLeadData( $ids, $tables );
+        endif;
+        $this->deleteLead( $ids );
     }
 
     public function addToBlocklist( $email, $multi = false )

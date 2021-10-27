@@ -5,6 +5,12 @@ use Mautic\CoreBundle\Controller\CommonController;
 
 class DefaultController extends CommonController
 {
+    /**
+     * The Default controller main action is used to set the data in forms to add/remove items of the blocklist.
+     * it also renders the correct view.
+     * 
+     * @since 1.0.0
+     */
     public function mainAction()
     {
         if( isset( $_POST['leadsarea'] ) )
@@ -39,6 +45,12 @@ class DefaultController extends CommonController
         );
     }
 
+    /**
+     * The delete action searches in the Database for the determined leads to delete all of its data.
+     * then redirect to the main blocklist page.
+     *
+     * @since 1.0.0
+     */
     public function deleteAction()
     {
         $contact = $this->getModel( 'blocklist.contact' );
@@ -50,10 +62,7 @@ class DefaultController extends CommonController
             $tables[] = $table['TABLE_NAME'];
         }
 
-        foreach( $tables as $table )
-        {
-            $contact->deleteLeads( $ids, $table );
-        }
+        $contact->deleteLeads( $ids, $tables );
 
         return $this->postActionRedirect(
             array(
@@ -63,6 +72,11 @@ class DefaultController extends CommonController
         );
     }
 
+    /**
+     * The 'cleaned' action renders the view containing all deleted leads in the blocklist.
+     *
+     * @since 1.0.0
+     */
     public function cleanedAction()
     {
         return $this->delegateView(
