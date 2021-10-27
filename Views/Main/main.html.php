@@ -1,4 +1,10 @@
 <?php
+/**
+ * @package Blocklist
+ * @author  Kevin Campos
+ * @version 1.1.0
+ * @license GPL v3 or later
+ */
 $view->extend( 'MauticCoreBundle:Default:content.html.php' );
 
 $header = 'Block List';
