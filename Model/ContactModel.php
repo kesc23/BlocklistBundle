@@ -148,7 +148,7 @@ class ContactModel
 
     function getLeadEmails()
     {
-        return $this->crossLeads()['emails'];
+        return ( $this->crossLeads() )['emails'];
     }
 
     function getLeadIds()
