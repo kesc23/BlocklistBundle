@@ -2,7 +2,7 @@
 /**
  * Data for @package Blocklist
  * @author Kevin Campos
- * @version 1.1.0
+ * @version 1.1.1
  * @license GPL v3 or later
  * 
  * - Name:     Blocklist
@@ -14,7 +14,7 @@ return array(
     'name'        => 'Blocklist',
     'description' => 'Este plugin cria uma blacklist de emails os quais não terão dados mantidos nem receberao conteúdo das campanhas',
     'author'      => 'Kesc23 (Kevin Campos)',
-    'version'     => '1.1.0',
+    'version'     => '1.1.1',
     'routes'      => array(
         'main'    => array(
             'plugin_blocklist_main'  => array(

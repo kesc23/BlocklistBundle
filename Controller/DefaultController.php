@@ -62,7 +62,10 @@ class DefaultController extends CommonController
             $tables[] = $table['TABLE_NAME'];
         }
 
-        $contact->deleteLeads( $ids, $tables );
+        if( null !== $ids && $ids )
+        {
+            $contact->deleteLeads( count( $ids ) > 1 ? $ids : $ids[0], $tables );
+        }
 
         return $this->postActionRedirect(
             array(
