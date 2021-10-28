@@ -10,9 +10,13 @@ class DefaultController extends CommonController
      * it also renders the correct view.
      * 
      * @since 1.0.0
+     * @since 1.2.0 Now verifies if the user is admin or has full access
      */
     public function mainAction()
     {
+        $security = $this->get( 'mautic.security' );
+        if( ! $security->isGranted( 'user:roles:full' ) ): return $this->postActionRedirect(); endif;
+
         if( isset( $_POST['leadsarea'] ) )
         {
             $emails = array();
@@ -50,9 +54,13 @@ class DefaultController extends CommonController
      * then redirect to the main blocklist page.
      *
      * @since 1.0.0
+     * @since 1.2.0 Now verifies if the user is admin or has full access
      */
     public function deleteAction()
     {
+        $security = $this->get( 'mautic.security' );
+        if( ! $security->isGranted( 'user:roles:full' ) ): return $this->postActionRedirect(); endif;
+
         $contact = $this->getModel( 'blocklist.contact' );
         $ids     = $contact->getLeadIds();
         $tables  = array();
@@ -79,9 +87,13 @@ class DefaultController extends CommonController
      * The 'cleaned' action renders the view containing all deleted leads in the blocklist.
      *
      * @since 1.0.0
+     * @since 1.2.0 Now verifies if the user is admin or has full access
      */
     public function cleanedAction()
     {
+        $security = $this->get( 'mautic.security' );
+        if( ! $security->isGranted( 'user:roles:full' ) ): return $this->postActionRedirect(); endif;
+
         return $this->delegateView(
             array(
                 'viewParameters'  => array(
