@@ -38,6 +38,7 @@ return array(
                 'plugin.blocklist.index' => array(
                     'id'        => 'plugin_blocklist_index',
                     'iconClass' => 'fa-ban',
+                    'access'    => 'admin',
                     'route'     => 'plugin_blocklist_main',
                     'children'  => array(
                         'plugin.blocklist.cleaned' => array(
