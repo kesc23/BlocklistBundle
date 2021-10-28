@@ -118,7 +118,11 @@ class ContactModel
 
         foreach( $inBlocklist as $lead )
         {
-            if( ! in_array( $lead, $leads ) )
+            /**
+             * Verifying if we do got a lead in the blocklist that isn't deleted:
+             * - if all leads in the blocklist are deleted, $leads surely is null.
+             */
+            if( ! in_array( $lead, null === $leads ? array() : $leads ) )
             {
                 $returnLeads[] = $lead;
             }
