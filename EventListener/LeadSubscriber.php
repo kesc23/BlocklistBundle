@@ -41,7 +41,10 @@ class LeadSubscriber implements EventSubscriberInterface
      */
     public function onImportPostSaved( $event = null )
     {
-        $this->blocklist->deleteLeads( $this->ids, $this->tables );
+        if( null !== $this->ids && $this->ids )
+        {
+            $this->blocklist->deleteLeads( count( $this->ids ) > 1 ? $this->ids : $this->ids[0], $this->tables );
+        }
     }
 
     /**
