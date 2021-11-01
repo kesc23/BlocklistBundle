@@ -21,7 +21,7 @@ class DefaultController extends CommonController
         {
             $emails = array();
 
-            if( ! null == preg_match_all( '/[\w\-\.]+@[\w\.\-]+/', $_POST['leadsarea'], $emails, PREG_UNMATCHED_AS_NULL ) )
+            if( ! null == preg_match_all( '/[\w\-\.\+]+@[\w\.\-]+/', $_POST['leadsarea'], $emails, PREG_UNMATCHED_AS_NULL ) )
             {
                 count( $emails[0] ) === 1 ? $multi = false : $multi = true;
                 $this->getModel( 'blocklist.contact' )->addToBlocklist( $emails[0], $multi );
@@ -32,7 +32,7 @@ class DefaultController extends CommonController
         {
             $removemails = array();
 
-            if( ! null == preg_match_all( '/[\w\-\.]+@[\w\.\-]+/', $_POST['remove_leadsarea'], $removemails, PREG_UNMATCHED_AS_NULL ) )
+            if( ! null == preg_match_all( '/[\w\-\.\+]+@[\w\.\-]+/', $_POST['remove_leadsarea'], $removemails, PREG_UNMATCHED_AS_NULL ) )
             {
                 count( $removemails[0] ) === 1 ? $multi = false : $multi = true;
                 $this->getModel( 'blocklist.contact' )->removeFromBlocklist( $removemails[0], $multi );
