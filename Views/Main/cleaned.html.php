@@ -14,12 +14,15 @@ $view->extend( 'MauticCoreBundle:Default:content.html.php' );
         <?php
             $emails = $contact->getOnlyDeletedLeads();
             if( ! empty( $emails ) ):
-            ?><div class="card" style="width: 100%; padding: 5px">    
-            <?php                
-                foreach( $emails as $lead )
-                {
-                    echo "<p>Email: {$lead}</p>";
-                }
+            ?><div style="margin: 70px auto; opacity: .5; text-align: center">
+                <h3><?php echo $view['translator']->trans('plugin.blocklist.totaldeleted') . ": " . count( $emails ) ?></h3>
+            </div>
+            <div class="card" style="width: 100%; padding: 5px">
+                <?php                
+                    foreach( $emails as $lead )
+                    {
+                        echo "<p>{$lead}</p>";
+                    }
                 ?>
             </div><?php
             else:?>
