@@ -2,17 +2,17 @@
 /**
  * @package Blocklist
  * @author  Kevin Campos
- * @version 1.1.0
  * @license GPL v3 or later
  */
 $view->extend( 'MauticCoreBundle:Default:content.html.php' );
 
-$header = 'Block List';
+$tr = $view['translator'];
+
+$view['slots']->set( 'headerTitle', $tr->trans( 'plugin.blocklist.titleh1' ) );
 
 ?>
 <div class="content-body">
     <div class="pa-md">
-        <h1><?php echo $view['translator']->trans('plugin.blocklist.titleh1') ?></h1>
         <div class="dashboard-widgets cards">
             <div class="card-flex widget" style="width: 50%">
                 <div class="card" style="padding: 5px">
