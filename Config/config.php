@@ -1,8 +1,8 @@
 <?php
 /**
- * Data for @package Blocklist
+ * @package Blocklist
  * @author Kevin Campos
- * @version 1.2.0
+ * @version 2.0.0
  * @license GPL v3 or later
  * 
  * - Name:     Blocklist
@@ -14,7 +14,7 @@ return array(
     'name'        => 'Blocklist',
     'description' => 'Este plugin cria uma blacklist de emails os quais não terão dados mantidos nem receberao conteúdo das campanhas',
     'author'      => 'Kesc23 (Kevin Campos)',
-    'version'     => '1.2.0',
+    'version'     => '2.0.0',
     'routes'      => array(
         'main'    => array(
             'plugin_blocklist_main'  => array(
@@ -66,13 +66,14 @@ return array(
         'events'  => array(
             'plugin.blocklist.event_listener.lead_subscriber' => array(
                 'class'     => 'MauticPlugin\BlocklistBundle\EventListener\LeadSubscriber',
-                'arguments' => 'mautic.blocklist.model.contact'
+                'arguments' => 'mautic.blocklist.model.blocklist'
             )
         ),
         'model'   => array(
-            'mautic.blocklist.model.contact' => array(
-                'class'    => 'MauticPlugin\BlocklistBundle\Model\ContactModel',
-                'alias'    => 'blocklist.contact',
+            'mautic.blocklist.model.blocklist' => array(
+                'class'     => 'MauticPlugin\BlocklistBundle\Model\BlocklistModel',
+                'alias'     => 'blocklist.blocklist',
+                'arguments' => 'doctrine.orm.entity_manager'
             )
         )
     ),
