@@ -2,25 +2,30 @@
 /**
  * @package Blocklist
  * @author  Kevin Campos
- * @version 1.1.0
  * @license GPL v3 or later
  */
 namespace MauticPlugin\BlocklistBundle\EventListener;
 
 use Mautic\LeadBundle\LeadEvents;
+use Mautic\LeadBundle\Event\ImportEvent;
+use MauticPlugin\BlocklistBundle\Model\BlocklistModel;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * LeadSubscriber is used to verify if an user is being imported but is in the blocklist. if it does, then it will be deleted.
  * 
  * @since 1.1.0
+ * @todo Add a way to put lead in the blocklist by campaign action
+ * @todo Add a way to remove lead in the blocklist by campaign action
  */
 class LeadSubscriber implements EventSubscriberInterface
 {
+    /**
+     * The Blocklist
+     *
+     * @var BlocklistModel
+     */
     private $blocklist;
-    private $blockEmails;
-    private $tables;
-    private $ids;
     
     /**
      * {@inheritDoc}
@@ -36,32 +41,26 @@ class LeadSubscriber implements EventSubscriberInterface
     /**
      * When executing LeadEvents::IMPORT_POST_SAVE event, onImportPostSaved is called to run the blocklist routines.
      *
-     * @param  Mautic\LeadBundle\Event\ImportEvent $event
+     * @param ImportEvent $event
      * @return void
      */
-    public function onImportPostSaved( $event = null )
+    public function onImportPostSaved( ImportEvent $event = null )
     {
-        if( null !== $this->ids && $this->ids )
+        $ids = $this->blocklist->getLeadIds();
+
+        if( null !== $ids && $ids )
         {
-            $this->blocklist->deleteLeads( count( $this->ids ) > 1 ? $this->ids : $this->ids[0], $this->tables );
+            $this->blocklist->deleteLeads( count( $ids ) > 1 ? $ids : $ids[0] );
         }
     }
 
     /**
      * When constructing, we add all basic blocklist data to the object.
      *
-     * @param MauticPlugin\BlocklistBundle\Model $blocklist
+     * @param BlocklistModel $blocklist
      */
-    public function __construct( $blocklist )
+    public function __construct( BlocklistModel $blocklist )
     {
-        $this->blocklist   = $blocklist;
-        $this->blockEmails = $this->blocklist->getFromBlocklist();
-        $this->ids         = $this->blocklist->getLeadIds();
-        $this->tables      = array();
-
-        foreach( $this->blocklist->getTables() as $table )
-        {
-            $this->tables[] = $table['TABLE_NAME'];
-        }
+        $this->blocklist = $blocklist;
     }
 }
