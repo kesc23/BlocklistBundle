@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Mautic\CoreBundle\Model\AbstractCommonModel;
 
 use function array_flip;
+use function count;
 use function serialize;
 use function unserialize;
 use function file_get_contents;
@@ -13,7 +14,16 @@ use function file_put_contents;
 
 class BlocklistModel extends AbstractCommonModel
 {
-    public $BLOCKLIST_DIR;
+    private $BLOCKLIST_DIR;
+
+    /**
+     * Returns BlockList directory
+     *
+     * @return string
+     */
+    public function getDir() {
+        return $this->BLOCKLIST_DIR;
+    }
     
     public function __construct( EntityManager $em )
     {
@@ -26,7 +36,7 @@ class BlocklistModel extends AbstractCommonModel
         }
     }
     
-    public function init()
+    private function init()
     {
         $arr = serialize( array() );
         file_put_contents( "{$this->BLOCKLIST_DIR}/list/list.txt", $arr );
@@ -83,32 +93,58 @@ class BlocklistModel extends AbstractCommonModel
         return unserialize( file_get_contents( "{$this->BLOCKLIST_DIR}/list/list.txt" ) );
     }
 
-    public function saveBlocklist( array $bl ){
+    public function saveBlocklist( array $bl )
+    {
         file_put_contents( "{$this->BLOCKLIST_DIR}/list/list.txt", serialize($bl) );
     }
 
     public function getOnlyDeletedLeads()
     {
-        //Swapping value with keys so we can find values like Lookup Tables
-        $leads       = array_flip( $this->getLeadEmails() );
+        // Swapping value with keys so we can find values like Lookup Tables
+        // Also checking if is null so we don't get an error ahead.
+        $leads       = array_flip( $this->getLeadEmails() ) ?? [];
         $inBlocklist = $this->getFromBlocklist();
 
         $returnLeads = [];
 
         foreach( $inBlocklist as $possibly_deleted_lead )
-        {
+        {   
             /**
              * Verifying if we do got a lead in the blocklist that isn't deleted:
              * 
              * * if all leads in the blocklist are deleted, $leads surely is null.
              */
-            if( ! @(null === $leads ? array() : $leads )[$possibly_deleted_lead] )
+            if( ! isset( $leads[$possibly_deleted_lead] ) )
             {
                 $returnLeads[] = $possibly_deleted_lead;
             }
         }
 
         return $returnLeads;
+    }
+
+    public function getOnlyDeletedLeadsOffsetted( $start = 0, $end = null )
+    {
+        $returnLeads = $this->getOnlyDeletedLeads();
+
+        return (object) [
+            'length' => count( $returnLeads ),
+            'data'   => array_slice( $returnLeads, $start,
+                null === $end
+                    ? count( $returnLeads ) - $start
+                    : $end - $start
+            )
+        ];
+    }
+
+    public function getListLength()
+    {
+        return count( $this->getFromBlocklist() );
+    }
+
+    public function getCleanedListLength()
+    {
+        return count( $this->getOnlyDeletedLeads() );
     }
 
     public function crossLeads()
