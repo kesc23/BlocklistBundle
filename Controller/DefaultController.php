@@ -99,18 +99,34 @@ class DefaultController extends CommonController
         $security = $this->get( 'mautic.security' );
         if( ! $security->isGranted( 'user:roles:full' ) ): return $this->postActionRedirect(); endif;
 
+        $page_num = filter_var( (int) $this->request->get( 'page' ), FILTER_VALIDATE_INT );
+        $page = $page_num <= 0 ? 1 : $page_num;
+        
         /**
          * @var BlocklistModel
          */
         $blockList = $this->getModel( 'blocklist.blocklist' );
 
+        $start = ( $page -1 ) * 20;
+        $count = (int) ceil( $blockList->getListLength() / 20);
+        $end   = ( $page * 20 ) <= $blockList->getListLength() ? ( $page * 20 ) : $blockList->getListLength();
+
+        $leads = $blockList->getOnlyDeletedLeadsOffsetted( $start, $end );
+
         return $this->delegateView(
-            array(
-                'viewParameters'  => array(
-                    'emails'  => $blockList->getOnlyDeletedLeads()
-                ),
+            [
+                'viewParameters'  => [
+                    'emails'  => (object) [
+                        'page'       => $page,
+                        'total'      => $leads->length,
+                        'start'      => $start,
+                        'end'        => $end,
+                        'totalPages' => $count,
+                        'content'    => $leads->data
+                    ]
+                ],
                 'contentTemplate' => 'BlocklistBundle:Main:cleaned.html.php',
-            )
+            ]
         ); 
     }
 }
