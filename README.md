@@ -15,5 +15,3 @@ Also, you can delete the contacts in the blocklist
 ## Blocklist "Deleted Contacts" panel
 
 In this screen you can see how many contacts are deleted and their emails.
- 
-_This plugin is being curently used by [Teknisa](https://www.teknisa.com/)_
